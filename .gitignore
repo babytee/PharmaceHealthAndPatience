@@ -1,0 +1,19 @@
+# Ignore configuration files
+src/main/resources/application-dev.properties
+src/main/resources/application-prod.properties
+.env
+.env_test
+
+# Ignore uploads and database backups
+uploads/
+dbbackup/
+src/test/
+target/
+
+
+.idea/
+.run/
+*.iml
+
+
+

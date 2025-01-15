@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>intelRx | Registration Verification</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    width: 100% !important;
+    height: 100% !important;
+}
+.email-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border:0.5px solid grey;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+    text-align: left;
+    padding: 20px 0;
+}
+.header img {
+    max-width: 150px;
+}
+
+.header a{
+text-decoration:none;
+}
+.content {
+    text-align: center;
+    padding: 20px;
+}
+.content h1 {
+    font-size: 24px;
+    color: #333333;
+}
+.content p {
+    font-size: 16px;
+    color: #666666;
+}
+.content img {
+    max-width: 100px;
+    margin: 20px 0;
+}
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    color: #ffffff!important;
+    background-color: #000000!important;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #666666;
+    background-color: #f4f4f4;
+    border-top: 1px solid #dddddd;
+}
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 97% !important;
+                margin:auto!important;
+                padding: 10px !important;
+            }
+            .content h1 {
+                font-size: 20px !important;
+            }
+            .content p {
+                font-size: 14px !important;
+            }
+            .button {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+                color: #ffffff!important;
+                background-color: #000000!important;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .header img {
+                max-width: 120px !important;
+            }
+            .content img {
+                max-width: 80px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <a href="https://www.intelrx.io">
+            <img src="https://www.intelrx.io/_nuxt/logo.c44bbaa1.png" alt="intelrx logo">
+        </a>
+    </div>
+    <div class="content">
+        <p>Welcome <span th:text="${name}"></span>,</p>
+        <p>We have successfully verified your email <span th:text="${obfuscateEmail}"></span>. Your account is now active.</p>
+        <p>Please click on the button below to log in and start using your account:</p>
+        <a href="https://inventory.intelrx.io/" class="button">LOG IN</a>
+    </div>
+    <div class="footer">
+        <p>
+            <a href="https://www.intelrx.io/about">About Us</a> |
+            <a href="https://www.intelrx.io/pharmacist">For Pharmacists</a> |
+            <a href="https://www.intelrx.io/pharmacy-owner">For Pharmacy Owners</a>|
+            <a href="https://www.intelrx.io">Terms of Use</a>|
+            <a href="https://www.intelrx.io">Privacy Policy</a>
+        </p>
+        <p>If you have any questions or
+            require further assistance, <br>please call us at +1 (365) 324-0365<br>
+            or email <a href="mailto:hello@intelrx.io">hello@intelrx.io</a></p>
+
+        <p>© 2024 IntelRx. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

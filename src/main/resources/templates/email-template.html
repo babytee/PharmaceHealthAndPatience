@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+    <link href="css/email-template.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://www.intelrx.io/_nuxt/logo.c44bbaa1.png" alt="Company Logo">
+    </div>
+    <div class="content">
+        <h3 th:text="'Hello, ' + ${name} + '!'">Hello, [Name]!</h3>
+        <p th:text="'This is a customized email sent from Spring Boot.'"></p>
+        <p th:text="'Message: ' + ${message}"></p>
+        <a th:href="${link}">Link</a>
+    </div>
+    <div class="footer">
+        <p>© 2024 Your Company. All rights reserved.</p>
+        <p>
+            <a href="https://www.yourcompany.com/privacy-policy">Privacy Policy</a> |
+            <a href="https://www.yourcompany.com/terms-of-service">Terms of Service</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

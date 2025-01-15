@@ -1,0 +1,40 @@
+name: Intelrx Prod Pipeline - v1.1
+on:
+  push:
+    branches:
+      - prod  # or your default branch
+  workflow_dispatch:
+  
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+          push: true
+          tags: intelrx/intelrx:prod
+    - name: Deployment
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.INTELRX_HOST }}
+        key: ${{ secrets.SERVER_KEY }}
+        username: ${{ secrets.INTELRX_USERNAME }}
+        script: |
+          cd ..
+          cd ..
+          cd var/www/html/prod
+          sudo docker pull intelrx/intelrx:prod
+          sudo docker-compose up -d
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
